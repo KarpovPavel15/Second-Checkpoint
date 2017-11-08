@@ -42,11 +42,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\CollectionHelper.cs" />
+    <Compile Include="Interfaces\IDigit.cs" />
+    <Compile Include="Interfaces\IPunctuation.cs" />
+    <Compile Include="Interfaces\ISenteceItem.cs" />
+    <Compile Include="Interfaces\ISentence.cs" />
+    <Compile Include="Interfaces\IWord.cs" />
+    <Compile Include="Parsers\Parser.cs" />
+    <Compile Include="Parsers\TextParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Separators\DigitSeparator.cs" />
+    <Compile Include="Separators\PunctuationSeparator.cs" />
+    <Compile Include="Separators\VolwesSeparator.cs" />
+    <Compile Include="Structures\Symbol.cs" />
+    <Compile Include="Text.cs" />
+    <Compile Include="TextObjects\Digit.cs" />
+    <Compile Include="TextObjects\Punctuation.cs" />
+    <Compile Include="TextObjects\Sentence.cs" />
+    <Compile Include="TextObjects\Word.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="File\Text.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
