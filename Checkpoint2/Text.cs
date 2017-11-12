@@ -49,7 +49,16 @@ namespace Checkpoint2
                 .ToList();
         }
 
-     
+        public void ReplaceWordInSentence(int index, int length, IList<ISentenceItem> elements)
+        {
+            Sentences[index] = new Sentence(Sentences[index].ReplaceWordByElements((x => x.Length == length), elements));
+        }
+
+        public void ReplaceWordInSentence(int index, int length, string line, Func<string, ISentence> parseLine)
+        {
+            Sentences[index] =
+                new Sentence(Sentences[index].ReplaceWordByElements((x => x.Length == length), parseLine(line).Items));
+        }
 
         public string TextToString()
         {

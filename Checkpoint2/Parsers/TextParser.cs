@@ -74,7 +74,27 @@ namespace Checkpoint2.Parsers
         {
             var result = new Sentence();
 
+            Func<string, ISentenceItem> toISentenceItem =
+                item =>
+                    (!PunctuationSeparator.AllSentenceSeparators.Contains(item) &&
+                     !DigitSeparator.ArabicDigits.Contains(item[0].ToString()))
+                        ? (ISentenceItem)new Word(item)
+                        : (DigitSeparator.ArabicDigits.Contains(item[0].ToString()))
+                            ? (ISentenceItem)new Digit(item)
+                            : new Punctuation(item);
+
+            foreach (Match match in _sentenceToWordsRegex.Matches(sentence))
+            {
+                for (var i = 1; i < match.Groups.Count; i++)
+                {
+                    if (match.Groups[i].Value.Trim() != "")
+                    {
+                        result.Items.Add(toISentenceItem(match.Groups[i].Value.Trim()));
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
-
